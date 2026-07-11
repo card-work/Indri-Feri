@@ -35,14 +35,12 @@
             
             <!-- SECTION HERO INNER -->
             <div class="card-header animated-section section-premium" id="sec-hero">
-                <!-- Decorative Ornaments -->
                 <div class="ornament top-left floral-line"></div>
                 <div class="ornament bottom-right big-flower"></div>
                 
                 <h1 class="premium-heading">Pernikahan</h1>
-                <!-- Foto mempelai utama lokal -->
                 <div class="couple-photo-container">
-                    <img src="photo/foto2.jpg" alt="Foto Pengantin" class="couple-photo" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                    <img src="photo/foto2.jpeg" alt="Foto Pengantin" class="couple-photo" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
                 </div>
                 <h2 class="couple-names">Indri & Feri</h2>
                 <p class="invitation-text">
@@ -53,14 +51,13 @@
             <!-- SECTION QURAN -->
             <div class="quran-section animated-section section-premium" id="sec-quran">
                 <div class="quran-ornament"><i class="fa-solid fa-star-and-crescent"></i></div>
-                <p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
+                <p class="arabic">وَمِنْ آيَاتِهِ AN خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
                 <p class="translation">"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
                 <p class="surah">QS. Ar-Rum Ayat 21</p>
             </div>
 
             <!-- SECTION COUNTDOWN -->
             <div id="countdown" class="animated-section section-premium">
-                <!-- Watermark & Decoration -->
                 <div class="ornament watermark center-watermark floral-watermark"></div>
                 <div class="ornament bottom-right leaves-ornament"></div>
                 
@@ -70,33 +67,47 @@
                 <div class="countdown-item"><span id="seconds">00</span><p>Detik</p></div>
             </div>
 
-            <!-- SECTION ACARA -->
+            <!-- SECTION ACARA (Mengikuti Desain Vertikal Gambar 2 & 3) -->
             <div class="event-details animated-section section-premium" id="sec-acara">
                 <div class="ornament top-left flower-style-1"></div>
                 <div class="ornament bottom-right flower-style-2"></div>
                 
-                <div class="event-card regular-card">
-                    <h3>Akad Nikah</h3>
-                    <div class="event-info-group">
-                        <p><i class="fa-solid fa-calendar-days"></i> Jumat, 07 Agustus 2026</p>
-                        <p><i class="fa-solid fa-clock"></i> 09:00 WIB - Selesai</p>
-                        <p><i class="fa-solid fa-map-marker-alt"></i> Dusun Alur Buging, Desa Rantau Pakam, Kec. Bendahara, Kab. Aceh Tamiang</p>
-                    </div>
+                <div class="event-title-container">
+                    <i class="fa-solid fa-map-location-dot event-main-icon"></i>
+                    <h2 class="event-section-heading">Waktu & Tempat Acara</h2>
+                </div>
+
+                <!-- Akad Card (Hanya Tanggal Saja) -->
+                <div class="event-card-v2 transparent-blur-card">
+                    <div class="event-card-icon"><i class="fa-solid fa-ring"></i></div>
+                    <h4 class="event-card-sub">Akad Nikah</h4>
+                    <p class="event-card-value-main">Jumat, 07 Agustus 2026</p>
+                </div>
+
+                <!-- Resepsi Layout Vertikal Penuh -->
+                <div class="event-card-v2 main-premium-accent-card">
+                    <div class="premium-badge-v2">Acara Utama</div>
+                    <div class="event-card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    <h4 class="event-card-sub">Hari & Tanggal</h4>
+                    <p class="event-card-value-main">Sabtu, 08 Agustus 2026</p>
                 </div>
                 
-                <div class="event-card premium-card">
-                    <div class="premium-badge">Acara Utama</div>
-                    <h3>Resepsi</h3>
-                    <div class="event-info-group">
-                        <div class="big-date">Sabtu, 08 Agustus 2026</div>
-                        <p><i class="fa-solid fa-clock"></i> 11:00 WIB - Selesai</p>
-                        <p><i class="fa-solid fa-map-marked-alt"></i> Dusun Alur Buging, Desa Rantau Pakam, Kec. Bendahara, Kab. Aceh Tamiang</p>
-                    </div>
-                    <div class="action-button-group">
-                        <a href="https://maps.app.goo.gl/example" target="_blank" id="btn-google-maps" class="action-button">
-                            <i class="fa-solid fa-diamond-turn-right"></i> Buka Google Maps
-                        </a>
-                    </div>
+                <div class="event-card-v2 transparent-blur-card">
+                    <div class="event-card-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h4 class="event-card-sub">Pukul</h4>
+                    <p class="event-card-value-main">11.00 WIB s/d Selesai</p>
+                </div>
+
+                <div class="event-card-v2 transparent-blur-card">
+                    <div class="event-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4 class="event-card-sub">Lokasi Tempat</h4>
+                    <p class="event-card-value-address">Dusun Alur Buging, Desa Rantau Pakam, Kec. Bendahara, Kab. Aceh Tamiang</p>
+                </div>
+
+                <div class="action-button-group">
+                    <a href="https://maps.app.goo.gl/example" target="_blank" id="btn-google-maps" class="action-button">
+                        <i class="fa-solid fa-location-arrow"></i> Lihat Lokasi Google Maps
+                    </a>
                 </div>
             </div>
             
@@ -138,29 +149,44 @@
                 
                 <h2 class="section-title">Momen Bahagia</h2>
                 <div class="gallery-grid">
-                    <img src="photo/foto3.jpg" alt="Gallery Image 1" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
-                    <img src="photo/foto4.jpg" alt="Gallery Image 2" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
-                    <img src="photo/foto5.jpg" alt="Gallery Image 3" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
-                    <img src="photo/foto6.jpg" alt="Gallery Image 4" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                    <img src="photo/foto3.png" alt="Gallery Image 1" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                    <img src="photo/foto4.png" alt="Gallery Image 2" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                    <img src="photo/foto5.jpeg" alt="Gallery Image 3" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                    <img src="photo/foto6.jpeg" alt="Gallery Image 4" class="gallery-item" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
                 </div>
             </div>
             
-            <!-- SECTION RSVP / GUESTBOOK -->
+            <!-- SECTION RSVP / GUESTBOOK (Mengikuti Desain Gambar 4) -->
             <div class="guestbook-section animated-section section-premium" id="sec-rsvp">
                 <div class="ornament top-left floral-style-4"></div>
                 <div class="ornament bottom-right floral-style-5"></div>
                 
-                <h2 class="section-title">Ucapan & Doa</h2>
+                <div class="guestbook-title-container">
+                    <i class="fa-regular fa-pen-to-square guestbook-main-icon"></i>
+                    <h2 class="guestbook-section-heading">Buku Tamu & Ucapan Doa</h2>
+                </div>
+
                 <form id="rsvp-form">
-                    <input type="text" id="rsvp-name" placeholder="Nama Anda" required>
-                    <select id="rsvp-status" required>
-                        <option value="" disabled selected>Pilih Status Kehadiran</option>
-                        <option value="Hadir">Hadir</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                    </select>
-                    <textarea id="rsvp-message" rows="4" placeholder="Tulis ucapan dan doa restu Anda di sini..." required></textarea>
+                    <div class="form-group-v2">
+                        <label for="rsvp-name">Nama Anda</label>
+                        <input type="text" id="rsvp-name" placeholder="Masukkan nama lengkap" required>
+                    </div>
                     
-                    <button type="submit" id="submit-rsvp-btn">Kirim Ucapan</button>
+                    <div class="form-group-v2">
+                        <label for="rsvp-status">Konfirmasi Kehadiran</label>
+                        <select id="rsvp-status" required>
+                            <option value="" disabled selected>-- Pilih Kehadiran --</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Tidak Hadir">Tidak Hadir</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group-v2">
+                        <label for="rsvp-message">Ucapan / Doa Restu</label>
+                        <textarea id="rsvp-message" rows="4" placeholder="Tulis doa atau ucapan selamat..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-rsvp-btn"><i class="fa-regular fa-paper-plane"></i> Kirim Ucapan</button>
                 </form>
                 
                 <div id="wishes-loading" class="loading-spinner" style="display: none;">Mengirim Ucapan...</div>
@@ -199,9 +225,9 @@
         <img class="modal-content" id="modal-image">
     </div>
 
-    <!-- Pemanggilan File Musik Lokal -->
+    <!-- Pemanggilan Musik Lokal Sesuai Struktur Folder Gambar 1 -->
     <audio id="background-music" loop>
-        <source src="lagu/Beautiful in White.mp3" type="audio/mpeg">
+        <source src="lagu/beutiful in white.mp3" type="audio/mpeg">
     </audio>
 
     <div class="floating-controls">
