@@ -3,7 +3,7 @@
     --color-gold-light: #f3e5ab;
     --color-gold: #d4af37;
     --color-gold-darker: #aa8414;
-    --color-theme-brown: #795538; /* Skema Coklat Tua Dominan */
+    --color-theme-brown: #795538;
     --color-champagne: #fdfbf7;
     --color-cream: #faf7f2;
     --color-ivory: #fffffb;
@@ -74,13 +74,13 @@ body {
     height: auto !important;
 }
 
-/* --- Cover / Hero --- */
+/* --- Cover / Hero (Foto Langsung Jadi BG - No Fade In Animation) --- */
 #cover-page {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background-image: url('photo/foto1.png');
     background-size: cover; background-position: center;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
-    z-index: 1000; transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+    z-index: 1000;
 }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -239,7 +239,7 @@ body {
 .countdown-item span { font-family: var(--font-subheading); font-size: clamp(1.8rem, 5.5vw, 2.3rem); font-weight: 700; color: var(--color-theme-brown); line-height: 1.1; }
 .countdown-item p { font-size: 0.65rem; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--color-text-muted); }
 
-/* --- Event Details Section --- */
+/* --- WAKTU & TEMPAT ACARA SECTION --- */
 .event-details { padding: 65px 30px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
 .event-title-container { text-align: center; margin-bottom: 15px; }
 .event-main-icon { font-size: 2rem; color: var(--color-theme-brown); margin-bottom: 10px; display: block; }
@@ -259,6 +259,8 @@ body {
 }
 
 .event-card-sub { font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; margin: 0 0 8px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; }
+
+/* REVISI FINAL: Nama lencana "RESEPSI" di dalam kotak Hari & Tanggal */
 .premium-badge-v2 {
     background: var(--color-theme-brown); color: white;
     padding: 5px 22px; border-radius: 50px; font-size: 0.68rem; text-transform: uppercase;
@@ -351,7 +353,7 @@ body {
 .wish-card .status-badge.tidak-hadir { background-color: #fce8e6; color: #c5221f; }
 .wish-card .message-text { font-size: 0.83rem; line-height: 1.6; color: #5a544d; margin: 0; font-weight: 300; }
 
-/* REVISI: Modifikasi Warna Elemen Card BSI Menjadi Coklat Tua Senada */
+/* Modifikasi Warna Elemen Card BSI Menjadi Coklat Tua Senada */
 .gift-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
 .gift-container { display: flex; justify-content: center; }
 .gift-box { 
