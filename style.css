@@ -19,7 +19,7 @@
     /* Shadows & Effects */
     --shadow-subtle: 0 4px 30px rgba(121, 85, 56, 0.04);
     --shadow-medium: 0 15px 45px rgba(121, 85, 56, 0.08);
-    --shadow-premium: 0 20px 50px rgba(121, 85, 56, 0.15);
+    --shadow-premium: 0 20px 50px rgba(121, 85, 56, 0.18);
     
     /* Premium Fonts Combo */
     --font-heading: 'Great Vibes', cursive;
@@ -74,7 +74,7 @@ body {
     height: auto !important;
 }
 
-/* --- Cover / Hero (Foto Langsung Jadi BG - No Fade In Animation) --- */
+/* --- Cover / Hero --- */
 #cover-page {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background-image: url('photo/foto1.png');
@@ -239,41 +239,55 @@ body {
 .countdown-item span { font-family: var(--font-subheading); font-size: clamp(1.8rem, 5.5vw, 2.3rem); font-weight: 700; color: var(--color-theme-brown); line-height: 1.1; }
 .countdown-item p { font-size: 0.65rem; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--color-text-muted); }
 
-/* --- WAKTU & TEMPAT ACARA SECTION --- */
-.event-details { padding: 65px 30px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+/* --- WAKTU & TEMPAT ACARA DENGAN PERBEDAAN MANDALAM (REVISI FINAL) --- */
+.event-details { padding: 65px 30px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .event-title-container { text-align: center; margin-bottom: 15px; }
 .event-main-icon { font-size: 2rem; color: var(--color-theme-brown); margin-bottom: 10px; display: block; }
 .event-section-heading { font-family: var(--font-subheading); font-size: 1.8rem; font-weight: 400; color: var(--color-theme-brown); font-style: italic; margin: 0; }
 
+/* Desain Khusus Card Akad Sampingan (Lebih Sederhana/Ringan) */
+.event-card-akad-style {
+    width: 100%; max-width: 500px; padding: 20px 24px; border-radius: 16px; text-align: center;
+    background: rgba(255, 255, 255, 0.45); border: 1px solid rgba(164, 124, 92, 0.08);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.85;
+}
+.event-card-value-akad { font-family: var(--font-subheading); font-size: 1.25rem; font-weight: 500; margin: 0; color: var(--color-text-muted); }
+
+/* Desain Wadah Master Untuk Blok Resepsi (Dibuat Menyatu Kuat, Tebal & Sangat Premium) */
+.resepsi-master-wrapper {
+    width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 16px;
+    background: rgba(255,255,255,0.7); border: 2px solid var(--color-theme-brown);
+    padding: 24px 16px; border-radius: 28px; box-shadow: var(--shadow-premium);
+}
 .event-card-v2 {
-    width: 100%; max-width: 500px; padding: 30px 24px; border-radius: 20px; text-align: center;
-    transition: var(--transition-smooth); display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; padding: 18px 20px; border-radius: 16px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .transparent-blur-card {
-    background: rgba(255, 255, 255, 0.55); border: 1px solid rgba(164, 124, 92, 0.1);
-    box-shadow: var(--shadow-subtle);
+    background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(164, 124, 92, 0.05);
 }
 .main-premium-accent-card {
-    background: rgba(255, 255, 255, 0.9); border: 1px solid var(--color-theme-brown);
-    box-shadow: var(--shadow-medium); position: relative;
+    background: #ffffff; border: 1px dashed rgba(121, 85, 56, 0.4);
 }
 
-.event-card-sub { font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; margin: 0 0 8px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; }
+.event-card-sub { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; margin: 0 0 6px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; }
+.event-card-sub-main { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; margin: 0 0 6px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; text-transform: uppercase; }
+.event-card-icon-main { font-size: 1.5rem; color: var(--color-theme-brown); margin-bottom: 8px; }
 
-/* REVISI FINAL: Nama lencana "RESEPSI" di dalam kotak Hari & Tanggal */
+/* Lencana RESEPSI Premium Di Dalam Kotak Tanggal */
 .premium-badge-v2 {
     background: var(--color-theme-brown); color: white;
-    padding: 5px 22px; border-radius: 50px; font-size: 0.68rem; text-transform: uppercase;
-    font-weight: 600; letter-spacing: 1.5px; margin: 4px 0 14px 0;
-    box-shadow: 0 0 12px rgba(121, 85, 56, 0.35);
-    border: 1px solid var(--color-gold);
+    padding: 5px 24px; border-radius: 50px; font-size: 0.72rem; text-transform: uppercase;
+    font-weight: 700; letter-spacing: 1.5px; margin: 4px 0 12px 0;
+    box-shadow: 0 4px 10px rgba(121, 85, 56, 0.25);
+    border: 1px solid var(--color-gold-light);
     display: inline-block;
 }
-.event-card-icon { font-size: 1.3rem; color: var(--color-theme-brown); margin-bottom: 12px; }
-.event-card-value-main { font-family: var(--font-subheading); font-size: 1.4rem; font-weight: 600; margin: 0; color: var(--color-dark); }
+.event-card-icon { font-size: 1.2rem; color: var(--color-theme-brown); margin-bottom: 10px; }
+.event-card-value-main { font-family: var(--font-subheading); font-size: 1.45rem; font-weight: 700; margin: 0; color: var(--color-dark); }
 .event-card-value-address { font-size: 0.85rem; line-height: 1.6; margin: 0; color: var(--color-text-muted); font-weight: 300; max-width: 400px; }
 
-.action-button-group { display: flex; margin-top: 15px; width: 100%; justify-content: center; }
+.action-button-group { display: flex; margin-top: 10px; width: 100%; justify-content: center; }
 .action-button { 
     background: var(--color-theme-brown); color: white !important; border: none; padding: 15px 40px; 
     border-radius: 50px; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: var(--transition-smooth); 
@@ -390,7 +404,8 @@ body {
     .card-header { padding: 50px 20px 35px 20px; }
     .gallery-grid { gap: 12px; }
     .event-details { padding: 45px 15px; }
-    .event-card-v2 { padding: 25px 20px; }
+    .resepsi-master-wrapper { padding: 16px 10px; border-radius: 20px; }
+    .event-card-v2 { padding: 15px 10px; }
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; padding-left: 40px; padding-right: 0; }
     .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
