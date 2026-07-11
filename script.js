@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Fall Leaves Particle Animation ---
     const leafContainer = document.getElementById('leaf-container');
     if (leafContainer) {
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 18; i++) {
             const leaf = document.createElement('div');
             leaf.className = 'leaf';
             leaf.style.left = `${Math.random() * 100}vw`;
-            leaf.style.animationDelay = `${Math.random() * 10}s`;
-            leaf.style.animationDuration = `${6 + Math.random() * 8}s`;
-            leaf.style.opacity = Math.random();
+            leaf.style.animationDelay = `${Math.random() * 12}s`;
+            leaf.style.animationDuration = `${8 + Math.random() * 10}s`;
+            leaf.style.opacity = (Math.random() * 0.5 + 0.2).toString();
             leafContainer.appendChild(leaf);
         }
     }
@@ -32,30 +32,26 @@ document.addEventListener('DOMContentLoaded', function() {
         guestNameDisplay.textContent = guestName.replace(/[+]/g, ' ');
     }
 
-    // --- Logika Pasti Terbuka & Pemicu Audio ---
+    // --- Logika Buka Undangan & Pemicu Audio ---
     if (openButton) {
         openButton.addEventListener('click', function() {
-            // Hilangkan cover screen secara visual
             coverPage.style.opacity = '0';
             coverPage.style.visibility = 'hidden';
             
-            // Aktifkan display flex pada layout utama
             mainContentContainer.style.display = 'flex';
             
-            // Trigger rendering transisi card agar membesar mulus
             setTimeout(() => {
                 innerCard.classList.add('visible');
             }, 50);
 
-            // Buka akses scroll vertikal browser
             document.body.style.overflowY = 'auto';
 
-            // Eksekusi sistem musik latar
+            // Eksekusi sistem musik latar lokal otomatis
             audio.play().then(() => {
                 musicControl.classList.add('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-music"></i>';
             }).catch(error => {
-                console.error("Audio playback terhambat setelan privasi:", error);
+                console.warn("Autoplay audio tertahan oleh kebijakan browser, memuat fallback icon click:", error);
                 musicControl.classList.remove('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
             });
@@ -84,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (distance < 0) {
             clearInterval(countdownFunction);
-            document.getElementById("countdown").innerHTML = "<h4>Acara Telah Berlangsung</h4>";
+            document.getElementById("countdown").innerHTML = "<h4 style='font-family:var(--font-subheading); color:var(--color-gold-darker); font-size:1.2rem; width:100%; text-align:center;'>Acara Pernikahan Telah Berlangsung</h4>";
             return;
         }
 
@@ -104,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const delay = entry.target.dataset.delay || '0.1';
-                entry.target.style.animation = `fadeInUp 0.8s ${delay}s ease forwards`;
+                entry.target.style.animation = `fadeInUp 1s ${delay}s cubic-bezier(0.16, 1, 0.3, 1) forwards`;
                 observer.unobserve(entry.target);
             }
         });
@@ -121,16 +117,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitRsvpBtn = document.getElementById('submit-rsvp-btn');
 
     async function fetchWishes() {
-        if (!wishesLoading) return;
-        wishesLoading.style.display = 'block';
-        wishesList.innerHTML = '';
+        if (!wishesList) return;
+        wishesList.innerHTML = '<div class="loading-spinner">Memuat ucapan...</div>';
         
         try {
             const response = await fetch(SCRIPT_URL);
             if (!response.ok) throw new Error("API Offline.");
             
             const data = await response.json();
-            wishesLoading.style.display = 'none';
+            wishesList.innerHTML = '';
 
             if (!data || data.length === 0) {
                 wishesList.innerHTML = '<div class="no-wishes-message">Belum ada ucapan masuk.</div>';
@@ -147,8 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } catch (error) {
             console.error("Sinkronisasi database ucapan gagal:", error);
-            wishesLoading.style.display = 'none';
-            wishesList.innerHTML = '<div class="no-wishes-message" style="color: red;">Gagal memuat ucapan.</div>';
+            wishesList.innerHTML = '<div class="no-wishes-message" style="color: #c5221f;">Gagal memuat daftar ucapan.</div>';
         }
     }
 
@@ -188,34 +182,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             submitRsvpBtn.disabled = true;
-            submitRsvpBtn.textContent = 'Mengirim data...';
+            if(wishesLoading) wishesLoading.style.display = 'block';
 
-            const formData = new FormData();
-            formData.append('name', nameInput);
-            formData.append('status', statusSelect);
-            formData.append('message', messageInput);
+            // Menggunakan URLSearchParams untuk validasi application/x-www-form-urlencoded menghindari kendala pra-inspeksi CORS
+            const payload = new URLSearchParams();
+            payload.append('name', nameInput);
+            payload.append('status', statusSelect);
+            payload.append('message', messageInput);
 
             try {
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    body: formData
+                    mode: 'no-cors', // Mode no-cors memaksa browser menerima respons buram dari Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: payload.toString()
                 });
 
-                if (!response.ok) throw new Error("POST request rejected.");
-                
-                showToast('Konfirmasi RSVP berhasil dikirim!');
+                showToast('Ucapan berhasil dikirim!');
                 rsvpForm.reset();
-                await fetchWishes();
+                
+                // Menambahkan jeda kecil sebelum fetch ulang untuk memastikan pemrosesan baris Google Sheets selesai sempurna
+                setTimeout(async () => {
+                    await fetchWishes();
+                }, 1000);
+
             } catch (error) {
-                console.error("Gagal mengunggah data:", error);
-                showToast('Koneksi bermasalah. Gagal mengirim rsvp.', 'error');
+                console.error("Gagal mengunggah data ucapan:", error);
+                showToast('Koneksi bermasalah. Gagal mengirim ucapan.', 'error');
             } finally {
                 submitRsvpBtn.disabled = false;
-                submitRsvpBtn.textContent = 'Kirim RSVP';
+                if(wishesLoading) wishesLoading.style.display = 'none';
             }
         });
     }
 
+    // Panggil fungsi pengambilan data pertama kali saat web dimuat
     fetchWishes();
 
     // --- Toast Notification & Clipboard Copy Mechanism ---
@@ -225,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showToast(message, type = 'success') {
         clearTimeout(toastTimer);
         toast.textContent = message;
-        toast.style.backgroundColor = type === 'error' ? '#c5221f' : '#2c2c2c';
+        toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(212,175,55,0.3)';
         toast.classList.add('show');
         toastTimer = setTimeout(() => {
             toast.classList.remove('show');
@@ -238,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const textToCopy = document.querySelector(targetSelector).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
                 showToast('Nomor rekening berhasil disalin!');
-            }).catch(err => showToast('Gagal menyalin text.', 'error'));
+            }).catch(err => showToast('Gagal menyalin teks.', 'error'));
         });
     });
     
