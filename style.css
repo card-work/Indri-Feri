@@ -39,12 +39,12 @@ body {
     overflow-x: hidden; 
 }
 
-/* --- Particle System & Global Animations --- */
-@keyframes fall {
-    0% { top: -20px; transform: translateX(0) rotate(-20deg); opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
-    100% { top: 100vh; transform: translateX(120px) rotate(360deg); opacity: 0; }
+/* --- Multilayer Alive Animations --- */
+@keyframes particleFall {
+    0% { top: -40px; transform: translateX(0) rotate(0deg) scale(0.6); opacity: 0; }
+    15% { opacity: 0.6; }
+    85% { opacity: 0.6; }
+    100% { top: 100vh; transform: translateX(150px) rotate(360deg) scale(1); opacity: 0; }
 }
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(164, 124, 92, 0.4); transform: scale(1); }
@@ -63,10 +63,19 @@ body {
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
+/* Semarak Multilayer Background Canvas Elements */
 #leaf-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 99; }
-.leaf { position: absolute; width: 15px; height: 15px; background-color: rgba(164, 124, 92, 0.2); border-radius: 50% 0; animation: fall 22s linear infinite; }
+.particle-flower { position: absolute; background-size: contain; background-repeat: no-repeat; animation: particleFall 18s linear infinite; }
 
-/* --- Cover / Hero (Menggunakan File Lokal PNG dari Folder Photo) --- */
+/* Strict Aspect Ratio 3:4 Engine to enforce no skewing */
+.ratio-3-4 {
+    aspect-ratio: 3 / 4 !important;
+    object-fit: cover !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* --- Cover / Hero (Tanpa Kotak Putih, Teks Coklat & Berbayang) --- */
 #cover-page {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background-image: url('photo/foto1.png');
@@ -76,28 +85,50 @@ body {
 }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.75) 100%);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.5) 100%);
     z-index: 1;
 }
-.hero-content {
-    position: relative; z-index: 2; text-align: center; color: var(--color-dark); padding: 40px 30px; 
-    max-width: 540px; width: 90%; background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255,255,255,0.8);
-    backdrop-filter: blur(12px); border-radius: 30px; box-shadow: var(--shadow-medium);
+.hero-content-fluid {
+    position: relative; z-index: 2; text-align: center; color: var(--color-dark); 
+    padding: 20px; max-width: 600px; width: 90%;
     animation: elegantFade 2s ease-out forwards;
 }
 .hero-subtext {
-    font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; 
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; margin-bottom: 15px; 
     letter-spacing: 5px; text-transform: uppercase; color: var(--color-theme-brown);
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
 }
-.hero-title {
-    font-family: var(--font-heading); font-size: clamp(3.8rem, 12vw, 5.5rem); margin: 15px 0;
-    font-weight: normal; text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-    background: linear-gradient(135deg, #aa8414 0%, #d4af37 50%, #f3e5ab 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+.hero-names-wrapper {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 20px 0;
 }
-.hero-content .yth-text { font-family: var(--font-subheading); font-size: 1.15rem; font-style: italic; margin-top: 25px; color: var(--color-text-muted); }
-#guest-name-display { font-family: var(--font-subheading); font-weight: 700; font-size: 1.65rem; margin: 5px 0 35px 0; color: var(--color-dark); letter-spacing: 0.5px; }
+.hero-name-line {
+    font-family: var(--font-heading); font-size: clamp(4.2rem, 14vw, 6.5rem); 
+    font-weight: normal; color: var(--color-theme-brown); line-height: 0.9;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.95), -1px -1px 0px rgba(255,255,255,0.8);
+}
+.hero-ampersand {
+    font-family: var(--font-subheading); font-size: 2.2rem; font-style: italic;
+    color: var(--color-theme-brown); margin: 8px 0; font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.hero-date-text {
+    font-family: var(--font-subheading); font-size: 1.35rem; font-weight: 600;
+    color: var(--color-theme-brown); margin: 15px 0 30px 0; letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+.hero-content-fluid .yth-text { 
+    font-family: var(--font-subheading); font-size: 1.15rem; font-style: italic; 
+    margin-top: 25px; color: var(--color-dark);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+#guest-name-display { 
+    font-family: var(--font-subheading); font-weight: 700; font-size: 1.75rem; 
+    margin: 5px 0 35px 0; color: var(--color-dark); letter-spacing: 0.5px; 
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
 
 #open-invitation-btn {
     background: linear-gradient(135deg, var(--color-theme-brown), #c49a78);
@@ -106,11 +137,8 @@ body {
     text-transform: uppercase; transition: var(--transition-smooth);
     animation: pulse 2.5s infinite; box-shadow: 0 5px 20px rgba(164,124,92,0.3);
 }
-#open-invitation-btn:hover {
-    transform: translateY(-2px); box-shadow: 0 12px 28px rgba(164,124,92,0.45);
-}
 
-/* --- Main Frame Canvas --- */
+/* --- Main Structure --- */
 #main-content { 
     display: flex; justify-content: center; align-items: center; 
     min-height: 100vh; padding: 60px 16px; 
@@ -126,7 +154,7 @@ body {
 }
 .card.visible { opacity: 1; transform: scale(1); }
 
-/* --- Ornaments Setup --- */
+/* --- Section Premium Ornaments --- */
 .section-premium { position: relative; overflow: hidden; width: 100%; }
 .ornament {
     position: absolute; pointer-events: none; opacity: 0.35; z-index: 1;
@@ -139,7 +167,7 @@ body {
     background-position: center;
 }
 
-/* SVG Decorative Mockups */
+/* SVG Assets Layout */
 .floral-line { top: 0; left: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,0 Q40,40 100,10 M0,10 Q50,50 90,100" stroke="%23a47c5c" fill="none" stroke-width="0.8"/></svg>'); }
 .big-flower { bottom: -20px; right: -20px; width: 160px; height: 160px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="80" r="30" fill="none" stroke="%23d4af37" stroke-width="0.5"/></svg>'); }
 .floral-watermark { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="%23a47c5c" stroke-width="0.8"/></svg>'); }
@@ -170,13 +198,16 @@ body {
 }
 .card-header { padding: 70px 30px 45px 30px; z-index: 2; position: relative; }
 
+/* Photo Containers and Strict 3:4 Controls */
 .couple-photo-container {
-    display: inline-block; padding: 8px; border: 1px solid var(--color-border);
-    border-radius: 50%; margin: 20px 0; background: rgba(255,255,255,0.4);
+    display: inline-block; padding: 10px; border: 1px solid var(--color-border);
+    border-radius: 24px; margin: 20px 0; background: rgba(255,255,255,0.4);
+    max-width: 240px; width: 100%; box-shadow: var(--shadow-subtle);
+    overflow: hidden;
 }
-.couple-photo { 
-    width: 170px; height: 170px; border-radius: 50%; object-fit: cover; 
-    border: 3px solid var(--color-theme-brown); box-shadow: var(--shadow-medium);
+.couple-photo {
+    border-radius: 16px; border: 2px solid var(--color-theme-brown);
+    box-shadow: var(--shadow-medium);
 }
 .couple-names { 
     font-family: var(--font-heading); font-size: clamp(3.8rem, 13vw, 5rem); 
@@ -193,7 +224,7 @@ body {
 .quran-section .translation { font-family: var(--font-subheading); font-size: 1.05rem; font-style: italic; color: var(--color-text-muted); line-height: 1.75; max-width: 540px; margin: 0 auto; }
 .quran-section .surah { font-size: 0.78rem; font-weight: 600; color: var(--color-theme-brown); letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; }
 
-/* --- Countdown (Premium Glassmorphism) --- */
+/* --- Countdown --- */
 #countdown { 
     display: flex; justify-content: center; gap: 15px; padding: 40px 20px; 
     background: rgba(245, 240, 230, 0.4); border-top: 1px solid rgba(164,124,92,0.12);
@@ -209,7 +240,7 @@ body {
 .countdown-item span { font-family: var(--font-subheading); font-size: clamp(1.8rem, 5.5vw, 2.3rem); font-weight: 700; color: var(--color-theme-brown); line-height: 1.1; }
 .countdown-item p { font-size: 0.65rem; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--color-text-muted); }
 
-/* --- WAKTU & TEMPAT ACARA SECTION (Desain Vertikal Sesuai Gambar 2 & 3) --- */
+/* --- Event Details Section --- */
 .event-details { padding: 65px 30px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
 .event-title-container { text-align: center; margin-bottom: 15px; }
 .event-main-icon { font-size: 2rem; color: var(--color-theme-brown); margin-bottom: 10px; display: block; }
@@ -269,13 +300,18 @@ body {
 .timeline-content h4 { font-family: var(--font-subheading); font-weight: 600; margin: 5px 0 10px 0; color: var(--color-dark); font-size: 1.2rem; }
 .timeline-content p { font-size: 0.83rem; line-height: 1.75; margin: 0; color: var(--color-text-muted); text-align: justify; font-weight: 300; }
 
-/* --- Gallery Grid --- */
+/* --- Gallery Grid 3:4 Engine --- */
 .gallery-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
-.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 25px; }
-.gallery-item { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; cursor: pointer; transition: var(--transition-smooth); box-shadow: var(--shadow-subtle); }
-.gallery-item:hover { transform: scale(1.03); box-shadow: var(--shadow-premium); }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 25px; }
+.gallery-item-wrapper {
+    width: 100%; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: var(--shadow-subtle); transition: var(--transition-smooth); background-color: rgba(255,255,255,0.3);
+}
+.gallery-item-wrapper:hover {
+    transform: translateY(-4px); box-shadow: var(--shadow-premium);
+}
 
-/* --- BUKU TAMU & UCAPAN DOA (Desain Indah Sesuai Gambar 4) --- */
+/* --- Buku Tamu Form --- */
 .guestbook-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
 .guestbook-title-container { text-align: center; margin-bottom: 35px; }
 .guestbook-main-icon { font-size: 2.2rem; color: var(--color-theme-brown); margin-bottom: 12px; display: block; }
@@ -289,7 +325,6 @@ body {
     font-family: var(--font-body); background-color: rgba(255,255,255,0.6); color: var(--color-dark); 
     font-size: 0.85rem; transition: var(--transition-smooth); 
 }
-#rsvp-form input::placeholder, #rsvp-form textarea::placeholder { color: #a5a09a; font-weight: 300; }
 #rsvp-form input:focus, #rsvp-form select:focus, #rsvp-form textarea:focus { 
     outline: none; border-color: var(--color-theme-brown); background-color: #ffffff; 
     box-shadow: 0 0 0 4px rgba(164,124,92,0.08); 
@@ -299,15 +334,8 @@ body {
     border-radius: 50px; font-family: var(--font-body); font-weight: 500; cursor: pointer; font-size: 0.9rem; 
     transition: var(--transition-smooth); box-shadow: 0 5px 15px rgba(164,124,92,0.2); display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-#submit-rsvp-btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 22px rgba(164,124,92,0.3); }
-#submit-rsvp-btn:disabled { background: #dcdad5; box-shadow: none; cursor: not-allowed; color: #9e9a95; }
 
-.loading-spinner { padding: 25px; font-size: 0.85rem; color: var(--color-theme-brown); text-align: center; }
-.no-wishes-message { padding: 30px; font-style: italic; color: var(--color-text-muted); font-size: 0.85rem; text-align: center; }
 #wishes-list { margin-top: 40px; max-height: 400px; overflow-y: auto; padding-right: 6px; }
-#wishes-list::-webkit-scrollbar { width: 4px; }
-#wishes-list::-webkit-scrollbar-thumb { background-color: rgba(164,124,92,0.2); border-radius: 10px; }
-
 .wish-card { 
     background-color: rgba(255, 255, 255, 0.6); border-radius: 16px; padding: 20px; 
     margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.7); border-left: 3px solid var(--color-theme-brown); 
@@ -320,56 +348,30 @@ body {
 .wish-card .status-badge.tidak-hadir { background-color: #fce8e6; color: #c5221f; }
 .wish-card .message-text { font-size: 0.83rem; line-height: 1.6; color: #5a544d; margin: 0; font-weight: 300; }
 
-/* --- Gift Block --- */
+/* --- Gift & Footer --- */
 .gift-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
 .gift-container { display: flex; justify-content: center; }
-.gift-box { 
-    background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255,255,255,0.8); 
-    border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 360px; box-shadow: var(--shadow-subtle); 
-}
-.gift-box i { color: var(--color-theme-brown); margin-bottom: 15px; opacity: 0.8; }
-.gift-box h4 { font-family: var(--font-subheading); font-weight: 600; margin: 5px 0; font-size: 1.25rem; color: var(--color-dark); }
+.gift-box { background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255,255,255,0.8); border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 360px; box-shadow: var(--shadow-subtle); }
 #account-number { font-family: var(--font-subheading); font-weight: 700; font-size: 1.45rem; color: var(--color-theme-brown); margin: 10px 0; letter-spacing: 1px; }
-.gift-box .copy-button { 
-    background-color: var(--color-dark); color: #ffffff; border: none; padding: 11px 24px; 
-    border-radius: 10px; cursor: pointer; transition: var(--transition-smooth); font-size: 0.8rem; 
-}
-.gift-box .copy-button:hover { background-color: #000000; }
+.gift-box .copy-button { background-color: var(--color-dark); color: #ffffff; border: none; padding: 11px 24px; border-radius: 10px; cursor: pointer; transition: var(--transition-smooth); font-size: 0.8rem; }
 
 .card-footer { padding: 65px 20px; font-family: var(--font-heading); font-size: 3rem; color: var(--color-theme-brown); z-index: 2; }
 
-/* --- Fixed Controls --- */
 .floating-controls { position: fixed; bottom: 25px; right: 25px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
-.control-btn { 
-    width: 46px; height: 46px; background: rgba(255, 255, 255, 0.85); 
-    border: 1px solid var(--color-border); backdrop-filter: blur(8px); 
-    color: var(--color-theme-brown); border-radius: 50%; display: flex; 
-    justify-content: center; align-items: center; cursor: pointer; box-shadow: var(--shadow-medium); 
-}
+.control-btn { width: 46px; height: 46px; background: rgba(255, 255, 255, 0.85); border: 1px solid var(--color-border); backdrop-filter: blur(8px); color: var(--color-theme-brown); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: var(--shadow-medium); }
 #music-control.playing i { animation: spin 5s linear infinite; }
 
-/* --- Lightbox Modal & Toast --- */
-.modal { 
-    display: none; position: fixed; z-index: 5000; padding: 40px 15px; 
-    left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(44, 42, 39, 0.95); 
-    justify-content: center; align-items: center; backdrop-filter: blur(8px); 
-}
+.modal { display: none; position: fixed; z-index: 5000; padding: 40px 15px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(44, 42, 39, 0.95); justify-content: center; align-items: center; backdrop-filter: blur(8px); }
 .modal-content { max-width: 100%; max-height: 80vh; border-radius: 16px; animation: elegantFade 0.4s ease; }
 .modal-close { position: absolute; top: 25px; right: 30px; color: #ffffff; font-size: 38px; cursor: pointer; }
 
-.toast { 
-    position: fixed; bottom: -70px; left: 50%; transform: translateX(-50%); 
-    background: rgba(44, 42, 39, 0.95); color: #ffffff; padding: 14px 35px; border-radius: 50px; 
-    font-size: 0.85rem; box-shadow: var(--shadow-premium); border: 1px solid rgba(164,124,92,0.3);
-    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 99999; 
-}
+.toast { position: fixed; bottom: -70px; left: 50%; transform: translateX(-50%); background: rgba(44, 42, 39, 0.95); color: #ffffff; padding: 14px 35px; border-radius: 50px; font-size: 0.85rem; box-shadow: var(--shadow-premium); border: 1px solid rgba(164,124,92,0.3); transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 99999; }
 .toast.show { bottom: 35px; }
 
 @media (max-width: 768px) {
     #main-content { padding: 35px 12px; }
     .card-header { padding: 50px 20px 35px 20px; }
-    .gallery-grid { gap: 10px; }
-    .gallery-item { height: 135px; border-radius: 14px; }
+    .gallery-grid { gap: 12px; }
     .event-details { padding: 45px 15px; }
     .event-card-v2 { padding: 25px 20px; }
     .timeline::after { left: 20px; }
