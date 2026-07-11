@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // === CONFIG: Google Apps Script Endpoint ===
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-gKTeJvL7-Lb07K9YsI77PFV-LTR5l6mUmkVvohyZdUKGiZYo5MQRqHY8RMoTGloKhw/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwCCiPtXAxN1wlMyqiToe_9uTKTvcCteRFAER8CwsIO_j_TqqrdnLTIXkaDqZKeP6UbpQ/exec";
 
     // --- DOM Element Selections ---
     const coverPage = document.getElementById('cover-page');
