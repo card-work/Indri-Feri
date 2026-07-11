@@ -3,23 +3,23 @@
     --color-gold-light: #f3e5ab;
     --color-gold: #d4af37;
     --color-gold-darker: #aa8414;
-    --color-theme-brown: #a47c5c;
+    --color-theme-brown: #795538; /* Skema Coklat Tua Dominan */
     --color-champagne: #fdfbf7;
     --color-cream: #faf7f2;
     --color-ivory: #fffffb;
     --color-soft-beige: #f5f0e6;
-    --color-dark: #4a4540;
+    --color-dark: #3a3530;
     --color-light: #ffffff;
     
     --background-main: #fcfbf9;
     --background-card: rgba(255, 255, 255, 0.92);
     --color-text-muted: #8a8279;
-    --color-border: rgba(164, 124, 92, 0.2);
+    --color-border: rgba(121, 85, 56, 0.2);
     
     /* Shadows & Effects */
-    --shadow-subtle: 0 4px 30px rgba(164, 124, 92, 0.04);
-    --shadow-medium: 0 15px 45px rgba(164, 124, 92, 0.08);
-    --shadow-premium: 0 20px 50px rgba(164, 124, 92, 0.15);
+    --shadow-subtle: 0 4px 30px rgba(121, 85, 56, 0.04);
+    --shadow-medium: 0 15px 45px rgba(121, 85, 56, 0.08);
+    --shadow-premium: 0 20px 50px rgba(121, 85, 56, 0.15);
     
     /* Premium Fonts Combo */
     --font-heading: 'Great Vibes', cursive;
@@ -47,16 +47,15 @@ body {
     100% { top: 100vh; transform: translateX(150px) rotate(360deg) scale(1); opacity: 0; }
 }
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(164, 124, 92, 0.4); transform: scale(1); }
-    70% { box-shadow: 0 0 0 15px rgba(164, 124, 92, 0); transform: scale(1.02); }
-    100% { box-shadow: 0 0 0 0 rgba(164, 124, 92, 0); transform: scale(1); }
+    0% { box-shadow: 0 0 0 0 rgba(121, 85, 56, 0.4); transform: scale(1); }
+    70% { box-shadow: 0 0 0 15px rgba(121, 85, 56, 0); transform: scale(1.02); }
+    100% { box-shadow: 0 0 0 0 rgba(121, 85, 56, 0); transform: scale(1); }
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-@keyframes elegantFade { from { opacity: 0; filter: blur(5px); } to { opacity: 1; filter: blur(0); } }
 @keyframes floatSlow {
     0% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-8px) rotate(2deg); }
@@ -67,7 +66,7 @@ body {
 #leaf-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 99; }
 .particle-flower { position: absolute; background-size: contain; background-repeat: no-repeat; animation: particleFall 18s linear infinite; }
 
-/* Strict Aspect Ratio 3:4 Engine to enforce no skewing */
+/* Strict Aspect Ratio 3:4 Engine */
 .ratio-3-4 {
     aspect-ratio: 3 / 4 !important;
     object-fit: cover !important;
@@ -75,7 +74,7 @@ body {
     height: auto !important;
 }
 
-/* --- Cover / Hero (Tanpa Kotak Putih, Teks Coklat & Berbayang) --- */
+/* --- Cover / Hero --- */
 #cover-page {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background-image: url('photo/foto1.png');
@@ -85,18 +84,17 @@ body {
 }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.5) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.45) 100%);
     z-index: 1;
 }
 .hero-content-fluid {
-    position: relative; z-index: 2; text-align: center; color: var(--color-dark); 
+    position: relative; z-index: 2; text-align: center; color: var(--color-theme-brown); 
     padding: 20px; max-width: 600px; width: 90%;
-    animation: elegantFade 2s ease-out forwards;
 }
 .hero-subtext {
     font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; margin-bottom: 15px; 
     letter-spacing: 5px; text-transform: uppercase; color: var(--color-theme-brown);
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .hero-names-wrapper {
@@ -115,9 +113,9 @@ body {
 }
 
 .hero-date-text {
-    font-family: var(--font-subheading); font-size: 1.35rem; font-weight: 600;
-    color: var(--color-theme-brown); margin: 15px 0 30px 0; letter-spacing: 1px;
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+    font-family: var(--font-subheading); font-size: 1.4rem; font-weight: 700;
+    color: var(--color-theme-brown); margin: 15px 0 30px 0; letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.95);
 }
 .hero-content-fluid .yth-text { 
     font-family: var(--font-subheading); font-size: 1.15rem; font-style: italic; 
@@ -131,11 +129,11 @@ body {
 }
 
 #open-invitation-btn {
-    background: linear-gradient(135deg, var(--color-theme-brown), #c49a78);
+    background: linear-gradient(135deg, var(--color-theme-brown), #966f4e);
     color: white; border: none; padding: 16px 42px; border-radius: 50px; cursor: pointer;
     font-family: var(--font-body); font-weight: 500; font-size: 0.85rem; letter-spacing: 2px; 
     text-transform: uppercase; transition: var(--transition-smooth);
-    animation: pulse 2.5s infinite; box-shadow: 0 5px 20px rgba(164,124,92,0.3);
+    animation: pulse 2.5s infinite; box-shadow: 0 5px 20px rgba(121,85,56,0.3);
 }
 
 /* --- Main Structure --- */
@@ -168,22 +166,22 @@ body {
 }
 
 /* SVG Assets Layout */
-.floral-line { top: 0; left: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,0 Q40,40 100,10 M0,10 Q50,50 90,100" stroke="%23a47c5c" fill="none" stroke-width="0.8"/></svg>'); }
+.floral-line { top: 0; left: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,0 Q40,40 100,10 M0,10 Q50,50 90,100" stroke="%23795538" fill="none" stroke-width="0.8"/></svg>'); }
 .big-flower { bottom: -20px; right: -20px; width: 160px; height: 160px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="80" cy="80" r="30" fill="none" stroke="%23d4af37" stroke-width="0.5"/></svg>'); }
-.floral-watermark { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="%23a47c5c" stroke-width="0.8"/></svg>'); }
-.leaves-ornament { bottom: 0; right: 0; width: 90px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,100 Q60,70 50,20" stroke="%23a47c5c" fill="none"/></svg>'); }
-.flower-style-1 { top: 0; left: 0; width: 130px; height: 130px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 Q30,40 80,10" stroke="%23a47c5c" fill="none"/></svg>'); }
+.floral-watermark { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="%23795538" stroke-width="0.8"/></svg>'); }
+.leaves-ornament { bottom: 0; right: 0; width: 90px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,100 Q60,70 50,20" stroke="%23795538" fill="none"/></svg>'); }
+.flower-style-1 { top: 0; left: 0; width: 130px; height: 130px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 Q30,40 80,10" stroke="%23795538" fill="none"/></svg>'); }
 .flower-style-2 { bottom: 0; right: 0; width: 130px; height: 130px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,100 Q70,60 20,80" stroke="%23d4af37" fill="none"/></svg>'); }
-.botanical-watermark { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L50,90" stroke="%23a47c5c" fill="none"/></svg>'); }
-.floral-thin { bottom: 0; left: 0; width: 100px; height: 100px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,100 Q40,80 30,30" stroke="%23a47c5c" fill="none"/></svg>'); }
-.flower-style-3 { top: 0; right: 0; width: 120px; height: 120px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 Q60,40 20,10" stroke="%23a47c5c" fill="none"/></svg>'); }
-.flower-watermark-2 { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,30 Q50,0 70,30" stroke="%23a47c5c" fill="none"/></svg>'); }
-.floral-style-4 { top: 0; left: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 C30,30 40,70 90,80" stroke="%23a47c5c" fill="none"/></svg>'); }
+.botanical-watermark { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L50,90" stroke="%23795538" fill="none"/></svg>'); }
+.floral-thin { bottom: 0; left: 0; width: 100px; height: 100px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,100 Q40,80 30,30" stroke="%23795538" fill="none"/></svg>'); }
+.flower-style-3 { top: 0; right: 0; width: 120px; height: 120px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 Q60,40 20,10" stroke="%23795538" fill="none"/></svg>'); }
+.flower-watermark-2 { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,30 Q50,0 70,30" stroke="%23795538" fill="none"/></svg>'); }
+.floral-style-4 { top: 0; left: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 C30,30 40,70 90,80" stroke="%23795538" fill="none"/></svg>'); }
 .floral-style-5 { bottom: 0; right: 0; width: 110px; height: 110px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,100 C70,70 60,30 10,20" stroke="%23d4af37" fill="none"/></svg>'); }
-.floral-line-center { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><line x1="10" y1="50" x2="90" y2="50" stroke="%23a47c5c" stroke-dasharray="2,2"/></svg>'); }
-.leaves-style-2 { top: 0; right: 0; width: 90px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 Q60,30 40,90" stroke="%23a47c5c" fill="none"/></svg>'); }
-.big-flower-footer { bottom: -10px; left: 50%; transform: translateX(-50%) !important; width: 180px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><ellipse cx="50" cy="50" rx="40" ry="20" fill="none" stroke="%23a47c5c" stroke-width="0.5"/></svg>'); }
-.small-floral-footer { top: 0; left: 0; width: 65px; height: 65px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="10" fill="none" stroke="%23a47c5c"/></svg>'); }
+.floral-line-center { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><line x1="10" y1="50" x2="90" y2="50" stroke="%23795538" stroke-dasharray="2,2"/></svg>'); }
+.leaves-style-2 { top: 0; right: 0; width: 90px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 Q60,30 40,90" stroke="%23795538" fill="none"/></svg>'); }
+.big-flower-footer { bottom: -10px; left: 50%; transform: translateX(-50%) !important; width: 180px; height: 90px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><ellipse cx="50" cy="50" rx="40" ry="20" fill="none" stroke="%23795538" stroke-width="0.5"/></svg>'); }
+.small-floral-footer { top: 0; left: 0; width: 65px; height: 65px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="10" fill="none" stroke="%23795538"/></svg>'); }
 
 /* --- Headers & Typography --- */
 .premium-heading {
@@ -198,17 +196,18 @@ body {
 }
 .card-header { padding: 70px 30px 45px 30px; z-index: 2; position: relative; }
 
-/* Photo Containers and Strict 3:4 Controls */
-.couple-photo-container {
-    display: inline-block; padding: 10px; border: 1px solid var(--color-border);
-    border-radius: 24px; margin: 20px 0; background: rgba(255,255,255,0.4);
-    max-width: 240px; width: 100%; box-shadow: var(--shadow-subtle);
+/* Kontrol Bingkai Bulat Sempurna Mempelai Utama */
+.couple-photo-container-circle {
+    display: inline-block; padding: 8px; border: 1px solid var(--color-border);
+    border-radius: 50%; margin: 20px 0; background: rgba(255,255,255,0.4);
+    width: 176px; height: 176px; box-shadow: var(--shadow-subtle);
     overflow: hidden;
 }
-.couple-photo {
-    border-radius: 16px; border: 2px solid var(--color-theme-brown);
-    box-shadow: var(--shadow-medium);
+.couple-photo-circle {
+    width: 160px; height: 160px; border-radius: 50% !important; object-fit: cover !important;
+    border: 2px solid var(--color-theme-brown); box-shadow: var(--shadow-medium);
 }
+
 .couple-names { 
     font-family: var(--font-heading); font-size: clamp(3.8rem, 13vw, 5rem); 
     color: var(--color-dark); margin: 15px 0; font-weight: normal;
@@ -258,13 +257,17 @@ body {
     background: rgba(255, 255, 255, 0.9); border: 1px solid var(--color-theme-brown);
     box-shadow: var(--shadow-medium); position: relative;
 }
+
+.event-card-sub { font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; margin: 0 0 8px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; }
 .premium-badge-v2 {
-    position: absolute; top: -12px; background: var(--color-theme-brown); color: white;
-    padding: 4px 18px; border-radius: 50px; font-size: 0.68rem; text-transform: uppercase;
-    font-weight: 600; letter-spacing: 1.5px;
+    background: var(--color-theme-brown); color: white;
+    padding: 5px 22px; border-radius: 50px; font-size: 0.68rem; text-transform: uppercase;
+    font-weight: 600; letter-spacing: 1.5px; margin: 4px 0 14px 0;
+    box-shadow: 0 0 12px rgba(121, 85, 56, 0.35);
+    border: 1px solid var(--color-gold);
+    display: inline-block;
 }
 .event-card-icon { font-size: 1.3rem; color: var(--color-theme-brown); margin-bottom: 12px; }
-.event-card-sub { font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; margin: 0 0 8px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; }
 .event-card-value-main { font-family: var(--font-subheading); font-size: 1.4rem; font-weight: 600; margin: 0; color: var(--color-dark); }
 .event-card-value-address { font-size: 0.85rem; line-height: 1.6; margin: 0; color: var(--color-text-muted); font-weight: 300; max-width: 400px; }
 
@@ -273,9 +276,9 @@ body {
     background: var(--color-theme-brown); color: white !important; border: none; padding: 15px 40px; 
     border-radius: 50px; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: var(--transition-smooth); 
     text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    box-shadow: 0 5px 20px rgba(164,124,92,0.25); width: 100%; max-width: 500px;
+    box-shadow: 0 5px 20px rgba(121, 85, 56, 0.25); width: 100%; max-width: 500px;
 }
-.action-button:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 25px rgba(164,124,92,0.35); }
+.action-button:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 25px rgba(121, 85, 56, 0.35); }
 
 /* --- Timeline Story --- */
 .story-section { padding: 65px 25px; border-top: 1px solid rgba(164,124,92,0.15); }
@@ -332,7 +335,7 @@ body {
 #submit-rsvp-btn { 
     width: 100%; padding: 16px; background: var(--color-theme-brown); color: white; border: none; 
     border-radius: 50px; font-family: var(--font-body); font-weight: 500; cursor: pointer; font-size: 0.9rem; 
-    transition: var(--transition-smooth); box-shadow: 0 5px 15px rgba(164,124,92,0.2); display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: var(--transition-smooth); box-shadow: 0 5px 15px rgba(121, 85, 56, 0.2); display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 
 #wishes-list { margin-top: 40px; max-height: 400px; overflow-y: auto; padding-right: 6px; }
@@ -348,12 +351,24 @@ body {
 .wish-card .status-badge.tidak-hadir { background-color: #fce8e6; color: #c5221f; }
 .wish-card .message-text { font-size: 0.83rem; line-height: 1.6; color: #5a544d; margin: 0; font-weight: 300; }
 
-/* --- Gift & Footer --- */
+/* REVISI: Modifikasi Warna Elemen Card BSI Menjadi Coklat Tua Senada */
 .gift-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
 .gift-container { display: flex; justify-content: center; }
-.gift-box { background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255,255,255,0.8); border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 360px; box-shadow: var(--shadow-subtle); }
-#account-number { font-family: var(--font-subheading); font-weight: 700; font-size: 1.45rem; color: var(--color-theme-brown); margin: 10px 0; letter-spacing: 1px; }
-.gift-box .copy-button { background-color: var(--color-dark); color: #ffffff; border: none; padding: 11px 24px; border-radius: 10px; cursor: pointer; transition: var(--transition-smooth); font-size: 0.8rem; }
+.gift-box { 
+    background: rgba(255, 255, 255, 0.75); border: 1px solid var(--color-border); 
+    border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 360px; 
+    box-shadow: var(--shadow-subtle); text-align: center;
+}
+.gift-bank-icon { color: var(--color-theme-brown) !important; margin-bottom: 15px; opacity: 0.9; }
+.gift-bank-title { font-family: var(--font-body) !important; font-weight: 700 !important; margin: 5px 0; font-size: 1.15rem; color: var(--color-theme-brown) !important; }
+#account-number { font-family: var(--font-subheading); font-weight: 700; font-size: 1.55rem; color: var(--color-theme-brown); margin: 12px 0; letter-spacing: 1.5px; }
+.gift-account-name { font-size: 1.1rem; color: var(--color-theme-brown); font-weight: 400; margin-bottom: 20px; }
+.gift-box .copy-button { 
+    background-color: var(--color-theme-brown) !important; color: #ffffff !important; border: none; padding: 12px 28px; 
+    border-radius: 12px; cursor: pointer; transition: var(--transition-smooth); font-size: 0.85rem; font-weight: 500;
+    box-shadow: 0 4px 12px rgba(121, 85, 56, 0.2);
+}
+.gift-box .copy-button:hover { filter: brightness(1.15); transform: translateY(-1px); }
 
 .card-footer { padding: 65px 20px; font-family: var(--font-heading); font-size: 3rem; color: var(--color-theme-brown); z-index: 2; }
 
