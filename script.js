@@ -10,17 +10,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('background-music');
     const musicControl = document.getElementById('music-control');
     
-    // --- Fall Leaves Particle Animation ---
+    // --- Multilayer Semarak Premium Particle Engine ---
     const leafContainer = document.getElementById('leaf-container');
+    const structures = [
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a47c5c" opacity="0.4"><path d="M17,8C15,10 13,16 18,21C13,20 9,15 11,10C12,7.5 15,5 17,8Z"/></svg>', // Botanical Leaf
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d4af37" opacity="0.3"><circle cx="12" cy="12" r="6" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="12" cy="12" r="2"/></svg>', // Luxury Ring Shape
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23b76e79" opacity="0.25"><path d="M12,2C14,6 20,8 16,12C20,16 14,18 12,22C10,18 4,16 8,12C4,8 10,6 12,2Z"/></svg>' // Watercolor Peony Sim
+    ];
+
     if (leafContainer) {
-        for (let i = 0; i < 16; i++) {
-            const leaf = document.createElement('div');
-            leaf.className = 'leaf';
-            leaf.style.left = `${Math.random() * 100}vw`;
-            leaf.style.animationDelay = `${Math.random() * 12}s`;
-            leaf.style.animationDuration = `${8 + Math.random() * 8}s`;
-            leaf.style.opacity = (Math.random() * 0.4 + 0.2).toString();
-            leafContainer.appendChild(leaf);
+        for (let i = 0; i < 24; i++) {
+            const element = document.createElement('div');
+            element.className = 'particle-flower';
+            const size = 12 + Math.random() * 16;
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.backgroundImage = `url('${structures[i % structures.length]}')`;
+            element.style.left = `${Math.random() * 100}vw`;
+            element.style.animationDelay = `${Math.random() * 14}s`;
+            element.style.animationDuration = `${10 + Math.random() * 12}s`;
+            leafContainer.appendChild(element);
         }
     }
 
@@ -32,26 +41,21 @@ document.addEventListener('DOMContentLoaded', function() {
         guestNameDisplay.textContent = guestName.replace(/[+]/g, ' ');
     }
 
-    // --- Logika Buka Undangan & Pemicu Audio ---
+    // --- Buka Undangan & Pemicu Audio ---
     if (openButton) {
         openButton.addEventListener('click', function() {
             coverPage.style.opacity = '0';
             coverPage.style.visibility = 'hidden';
-            
             mainContentContainer.style.display = 'flex';
             
-            setTimeout(() => {
-                innerCard.classList.add('visible');
-            }, 50);
-
+            setTimeout(() => { innerCard.classList.add('visible'); }, 50);
             document.body.style.overflowY = 'auto';
 
-            // Eksekusi sistem musik latar lokal otomatis sesuai Gambar 1
             audio.play().then(() => {
                 musicControl.classList.add('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-music"></i>';
             }).catch(error => {
-                console.warn("Autoplay audio ditangguhkan oleh setelan keamanan browser:", error);
+                console.warn("Autoplay ditangguhkan kebijakan privasi browser:", error);
                 musicControl.classList.remove('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
             });
@@ -122,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             const response = await fetch(SCRIPT_URL);
-            if (!response.ok) throw new Error("API Spreadsheet Offline.");
+            if (!response.ok) throw new Error("API Offline.");
             
             const data = await response.json();
             wishesList.innerHTML = '';
@@ -133,15 +137,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             data.forEach(item => {
-                const wish = {
-                    name: item.name,
-                    status: item.status,
-                    message: item.message
-                };
+                const wish = { name: item.name, status: item.status, message: item.message };
                 renderWishCard(wish);
             });
         } catch (error) {
-            console.error("Sinkronisasi database ucapan gagal:", error);
+            console.error("Sinkronisasi daftar ucapan gagal:", error);
             wishesList.innerHTML = '<div class="no-wishes-message" style="color: #c5221f;">Gagal memuat daftar ucapan.</div>';
         }
     }
@@ -193,21 +193,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors', 
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: payload.toString()
                 });
 
                 showToast('Ucapan berhasil dikirim!');
                 rsvpForm.reset();
-                
-                setTimeout(async () => {
-                    await fetchWishes();
-                }, 1000);
+                setTimeout(async () => { await fetchWishes(); }, 1000);
 
             } catch (error) {
-                console.error("Gagal mengunggah data ucapan:", error);
+                console.error("Gagal mengunggah data:", error);
                 showToast('Koneksi bermasalah. Gagal mengirim ucapan.', 'error');
             } finally {
                 submitRsvpBtn.disabled = false;
@@ -218,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchWishes();
 
-    // --- Toast Notification & Clipboard Copy Mechanism ---
+    // --- Toast & Clipboard Mechanism ---
     const toast = document.getElementById('toast-notification');
     let toastTimer;
     
@@ -227,9 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toast.textContent = message;
         toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(164,124,92,0.3)';
         toast.classList.add('show');
-        toastTimer = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+        toastTimer = setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
 
     document.querySelectorAll('.copy-button').forEach(button => {
@@ -254,10 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    if (closeModal) {
-        closeModal.onclick = () => modal.style.display = "none";
-    }
-    window.onclick = (event) => { 
-        if (event.target == modal) modal.style.display = "none"; 
-    }
+    if (closeModal) { closeModal.onclick = () => modal.style.display = "none"; }
+    window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 });
