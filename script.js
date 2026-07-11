@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Fall Leaves Particle Animation ---
     const leafContainer = document.getElementById('leaf-container');
     if (leafContainer) {
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 16; i++) {
             const leaf = document.createElement('div');
             leaf.className = 'leaf';
             leaf.style.left = `${Math.random() * 100}vw`;
             leaf.style.animationDelay = `${Math.random() * 12}s`;
-            leaf.style.animationDuration = `${8 + Math.random() * 10}s`;
-            leaf.style.opacity = (Math.random() * 0.5 + 0.2).toString();
+            leaf.style.animationDuration = `${8 + Math.random() * 8}s`;
+            leaf.style.opacity = (Math.random() * 0.4 + 0.2).toString();
             leafContainer.appendChild(leaf);
         }
     }
@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             document.body.style.overflowY = 'auto';
 
-            // Eksekusi sistem musik latar lokal otomatis
+            // Eksekusi sistem musik latar lokal otomatis sesuai Gambar 1
             audio.play().then(() => {
                 musicControl.classList.add('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-music"></i>';
             }).catch(error => {
-                console.warn("Autoplay audio tertahan oleh kebijakan browser, memuat fallback icon click:", error);
+                console.warn("Autoplay audio ditangguhkan oleh setelan keamanan browser:", error);
                 musicControl.classList.remove('playing');
                 musicControl.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
             });
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (distance < 0) {
             clearInterval(countdownFunction);
-            document.getElementById("countdown").innerHTML = "<h4 style='font-family:var(--font-subheading); color:var(--color-gold-darker); font-size:1.2rem; width:100%; text-align:center;'>Acara Pernikahan Telah Berlangsung</h4>";
+            document.getElementById("countdown").innerHTML = "<h4 style='font-family:var(--font-subheading); color:var(--color-theme-brown); font-size:1.1rem; width:100%; text-align:center;'>Acara Pernikahan Telah Berlangsung</h4>";
             return;
         }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             const response = await fetch(SCRIPT_URL);
-            if (!response.ok) throw new Error("API Offline.");
+            if (!response.ok) throw new Error("API Spreadsheet Offline.");
             
             const data = await response.json();
             wishesList.innerHTML = '';
@@ -184,16 +184,15 @@ document.addEventListener('DOMContentLoaded', function() {
             submitRsvpBtn.disabled = true;
             if(wishesLoading) wishesLoading.style.display = 'block';
 
-            // Menggunakan URLSearchParams untuk validasi application/x-www-form-urlencoded menghindari kendala pra-inspeksi CORS
             const payload = new URLSearchParams();
             payload.append('name', nameInput);
             payload.append('status', statusSelect);
             payload.append('message', messageInput);
 
             try {
-                const response = await fetch(SCRIPT_URL, {
+                await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Mode no-cors memaksa browser menerima respons buram dari Google Apps Script
+                    mode: 'no-cors', 
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
@@ -203,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showToast('Ucapan berhasil dikirim!');
                 rsvpForm.reset();
                 
-                // Menambahkan jeda kecil sebelum fetch ulang untuk memastikan pemrosesan baris Google Sheets selesai sempurna
                 setTimeout(async () => {
                     await fetchWishes();
                 }, 1000);
@@ -218,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Panggil fungsi pengambilan data pertama kali saat web dimuat
     fetchWishes();
 
     // --- Toast Notification & Clipboard Copy Mechanism ---
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showToast(message, type = 'success') {
         clearTimeout(toastTimer);
         toast.textContent = message;
-        toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(212,175,55,0.3)';
+        toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(164,124,92,0.3)';
         toast.classList.add('show');
         toastTimer = setTimeout(() => {
             toast.classList.remove('show');
