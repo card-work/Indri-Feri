@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Fulan & Fulanah</title>
+    <title>Undangan Pernikahan - Indri & Feri</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,21 +16,26 @@
 
     <div id="leaf-container"></div>
     
-    <!-- Hero Section / Cover Page -->
+    <!-- Hero Section / Layar Depan Premium -->
     <div id="cover-page">
-        <p>THE WEDDING OF</p>
-        <h1>Fulan & Fulanah</h1>
-        <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-        <h2 id="guest-name-display">Tamu Undangan</h2>
-        <button id="open-invitation-btn"><i class="fa-solid fa-envelope-open"></i> Buka Undangan</button>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p>THE WEDDING OF</p>
+            <h1>Indri & Feri</h1>
+            <p class="yth-text">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <h2 id="guest-name-display">Tamu Undangan</h2>
+            <button id="open-invitation-btn"><i class="fa-solid fa-envelope-open"></i> Buka Undangan</button>
+        </div>
     </div>
 
-    <div id="main-content">
+    <!-- Konten Utama (Muncul setelah klik buka undangan) -->
+    <div id="main-content" style="display: none;">
         <div class="card">
             <div class="card-header animated-section">
                 <h1>The Wedding Of</h1>
-                <img src="https://raw.githubusercontent.com/RivaniJahyanti/card/b1f66b561ed68c03caa18f69cf185ceab5419653/photo/74271.jpg" alt="Foto Pengantin" class="couple-photo">
-                <h2 class="couple-names">Fulan & Fulanah</h2>
+                <!-- Foto mempelai utama dari repositori baru -->
+                <img src="https://raw.githubusercontent.com/card-work/Indri-Feri/main/photo/74271.jpg" alt="Foto Pengantin" class="couple-photo" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500';">
+                <h2 class="couple-names">Indri & Feri</h2>
                 <p class="invitation-text">
                     Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
                 </p>
@@ -38,8 +43,8 @@
 
             <!-- Quranic Section (QS. Ar-Rum: 21) -->
             <div class="quran-section animated-section">
-                <div class="quran-ornament"><i class="fa-solid fa-star-and-crecent"></i></div>
-                <p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
+                <div class="quran-ornament"><i class="fa-solid fa-star-and-crescent"></i></div>
+                <p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ Bَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
                 <p class="translation">"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
                 <p class="surah">QS. Ar-Rum Ayat 21</p>
             </div>
@@ -111,10 +116,10 @@
             <div class="gallery-section animated-section">
                 <h2 class="section-title">Momen Bahagia</h2>
                 <div class="gallery-grid">
-                    <img src="https://raw.githubusercontent.com/RivaniJahyanti/card/b1f66b561ed68c03caa18f69cf185ceab5419653/photo/74266.jpg" alt="Gallery Image 1" class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/RivaniJahyanti/card/b1f66b561ed68c03caa18f69cf185ceab5419653/photo/74265.jpg" alt="Gallery Image 2" class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/RivaniJahyanti/card/b1f66b561ed68c03caa18f69cf185ceab5419653/photo/74267.jpg" alt="Gallery Image 3" class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/RivaniJahyanti/card/b1f66b561ed68c03caa18f69cf185ceab5419653/photo/74268.jpg" alt="Gallery Image 4" class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/card-work/Indri-Feri/main/photo/74266.jpg" alt="Gallery Image 1" class="gallery-item" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/card-work/Indri-Feri/main/photo/74265.jpg" alt="Gallery Image 2" class="gallery-item" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/card-work/Indri-Feri/main/photo/74267.jpg" alt="Gallery Image 3" class="gallery-item" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/card-work/Indri-Feri/main/photo/74268.jpg" alt="Gallery Image 4" class="gallery-item" onerror="this.style.display='none'">
                 </div>
             </div>
             
@@ -133,7 +138,6 @@
                     <button type="submit" id="submit-rsvp-btn">Kirim RSVP</button>
                 </form>
                 
-                <!-- Stream Data Daftar Ucapan dari Spreadsheet -->
                 <div id="wishes-loading" class="loading-spinner" style="display: none;">Memuat ucapan...</div>
                 <div id="wishes-list"></div>
             </div>
@@ -164,8 +168,9 @@
         <img class="modal-content" id="modal-image">
     </div>
 
+    <!-- Jalur lagu yang diarahkan ke repositori baru -->
     <audio id="background-music" loop>
-        <source src="https://rivanijahyanti.github.io/card/lagu/beutiful%20in%20white.mp3" type="audio/mpeg">
+        <source src="https://card-work.github.io/Indri-Feri/lagu/beautiful%20in%20white.mp3" type="audio/mpeg">
     </audio>
 
     <div class="floating-controls">
