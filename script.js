@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Multilayer Semarak Premium Particle Engine ---
     const leafContainer = document.getElementById('leaf-container');
     const structures = [
-        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a47c5c" opacity="0.4"><path d="M17,8C15,10 13,16 18,21C13,20 9,15 11,10C12,7.5 15,5 17,8Z"/></svg>', // Botanical Leaf
-        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d4af37" opacity="0.3"><circle cx="12" cy="12" r="6" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="12" cy="12" r="2"/></svg>', // Luxury Ring Shape
-        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23b76e79" opacity="0.25"><path d="M12,2C14,6 20,8 16,12C20,16 14,18 12,22C10,18 4,16 8,12C4,8 10,6 12,2Z"/></svg>' // Watercolor Peony Sim
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23795538" opacity="0.4"><path d="M17,8C15,10 13,16 18,21C13,20 9,15 11,10C12,7.5 15,5 17,8Z"/></svg>', 
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d4af37" opacity="0.3"><circle cx="12" cy="12" r="6" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="12" cy="12" r="2"/></svg>', 
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23b76e79" opacity="0.25"><path d="M12,2C14,6 20,8 16,12C20,16 14,18 12,22C10,18 4,16 8,12C4,8 10,6 12,2Z"/></svg>' 
     ];
 
     if (leafContainer) {
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showToast('Koneksi bermasalah. Gagal mengirim ucapan.', 'error');
             } finally {
                 submitRsvpBtn.disabled = false;
-                if(wishesLoading) wishesLoading.style.display = 'none';
+                if(wishesLoading) wishesLoading.style.none;
             }
         });
     }
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showToast(message, type = 'success') {
         clearTimeout(toastTimer);
         toast.textContent = message;
-        toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(164,124,92,0.3)';
+        toast.style.borderColor = type === 'error' ? '#c5221f' : 'rgba(121,85,56,0.3)';
         toast.classList.add('show');
         toastTimer = setTimeout(() => { toast.classList.remove('show'); }, 3000);
     }
