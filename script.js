@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSelector = button.dataset.clipboardTarget;
             const textToCopy = document.querySelector(targetSelector).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                showToast('Nomor rekening berhasil disalin!');
+                showToast('Berhasil disalin ke clipboard!');
             }).catch(err => showToast('Gagal menyalin teks.', 'error'));
         });
     });
