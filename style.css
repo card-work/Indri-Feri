@@ -223,6 +223,159 @@ body {
 .quran-section .translation { font-family: var(--font-subheading); font-size: 1.05rem; font-style: italic; color: var(--color-text-muted); line-height: 1.75; max-width: 540px; margin: 0 auto; }
 .quran-section .surah { font-size: 0.78rem; font-weight: 600; color: var(--color-theme-brown); letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; }
 
+/* --- REVISI 1: CSS SECTION MEMPELAI (NEW CLASSES) --- */
+.mempelai-section {
+    padding: 65px 35px;
+    border-top: 1px solid rgba(164, 124, 92, 0.15);
+    position: relative;
+    z-index: 2;
+}
+.mempelai-header {
+    text-align: center;
+    margin-bottom: 45px;
+    position: relative;
+    z-index: 2;
+}
+.mempelai-title {
+    font-family: var(--font-heading);
+    font-weight: normal;
+    color: var(--color-theme-brown);
+    margin-bottom: 12px;
+    font-size: clamp(2.8rem, 8vw, 3.6rem);
+}
+.mempelai-intro {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 0 25px;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    max-width: 540px;
+    margin: 0 auto;
+}
+.mempelai-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    position: relative;
+    z-index: 2;
+}
+.mempelai-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 28px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s ease;
+}
+.mempelai-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255, 255, 255, 0.75);
+}
+.mempelai-photo-wrapper {
+    width: 100%;
+    max-width: 230px;
+    margin: 0 auto 22px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 8px 25px rgba(121, 85, 56, 0.1);
+}
+.mempelai-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mempelai-card:hover .mempelai-photo {
+    transform: scale(1.03);
+}
+.mempelai-name {
+    font-family: var(--font-heading);
+    font-size: clamp(2.3rem, 6vw, 2.8rem);
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    background: linear-gradient(135deg, #8a6f27 0%, #d4af37 50%, #aa8414 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.mempelai-parent-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: #9c9286;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+}
+.mempelai-parent-names {
+    font-family: var(--font-subheading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-theme-brown);
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+}
+.mempelai-ig-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    color: var(--color-theme-brown) !important;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: var(--transition-smooth);
+}
+.mempelai-ig-btn:hover {
+    background: var(--color-gold);
+    color: white !important;
+    border-color: var(--color-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+.mempelai-quote {
+    text-align: center;
+    max-width: 520px;
+    margin: 20px auto 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.mempelai-quote p {
+    font-family: var(--font-subheading);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #9c9286;
+    line-height: 1.7;
+    margin: 0;
+}
+.mempelai-floral-watermark {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,30 C50,10 50,90 70,70 C90,50 10,50 30,30 Z" stroke="%23795538" fill="none" stroke-width="0.5"/></svg>');
+}
+.mempelai-floral-top {
+    top: 0; left: 0; width: 120px; height: 120px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 C30,15 45,45 60,90 M0,0 C15,30 45,45 90,60" stroke="%23795538" fill="none" stroke-width="0.6"/></svg>');
+}
+.mempelai-floral-bottom {
+    bottom: 0; right: 0; width: 120px; height: 120px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,100 C70,85 55,55 40,10 M100,100 C85,70 55,55 10,40" stroke="%23d4af37" fill="none" stroke-width="0.6"/></svg>');
+}
+
 /* --- Countdown --- */
 #countdown { 
     display: flex; justify-content: center; gap: 15px; padding: 40px 20px; 
@@ -239,13 +392,12 @@ body {
 .countdown-item span { font-family: var(--font-subheading); font-size: clamp(1.8rem, 5.5vw, 2.3rem); font-weight: 700; color: var(--color-theme-brown); line-height: 1.1; }
 .countdown-item p { font-size: 0.65rem; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--color-text-muted); }
 
-/* --- WAKTU & TEMPAT ACARA DENGAN PERBEDAAN MANDALAM (REVISI FINAL) --- */
+/* --- WAKTU & TEMPAT ACARA --- */
 .event-details { padding: 65px 30px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .event-title-container { text-align: center; margin-bottom: 15px; }
 .event-main-icon { font-size: 2rem; color: var(--color-theme-brown); margin-bottom: 10px; display: block; }
 .event-section-heading { font-family: var(--font-subheading); font-size: 1.8rem; font-weight: 400; color: var(--color-theme-brown); font-style: italic; margin: 0; }
 
-/* Desain Khusus Card Akad Sampingan (Lebih Sederhana/Ringan) */
 .event-card-akad-style {
     width: 100%; max-width: 500px; padding: 20px 24px; border-radius: 16px; text-align: center;
     background: rgba(255, 255, 255, 0.45); border: 1px solid rgba(164, 124, 92, 0.08);
@@ -253,7 +405,6 @@ body {
 }
 .event-card-value-akad { font-family: var(--font-subheading); font-size: 1.25rem; font-weight: 500; margin: 0; color: var(--color-text-muted); }
 
-/* Desain Wadah Master Untuk Blok Resepsi (Dibuat Menyatu Kuat, Tebal & Sangat Premium) */
 .resepsi-master-wrapper {
     width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 16px;
     background: rgba(255,255,255,0.7); border: 2px solid var(--color-theme-brown);
@@ -274,7 +425,6 @@ body {
 .event-card-sub-main { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; margin: 0 0 6px 0; color: var(--color-theme-brown); letter-spacing: 0.5px; text-transform: uppercase; }
 .event-card-icon-main { font-size: 1.5rem; color: var(--color-theme-brown); margin-bottom: 8px; }
 
-/* Lencana RESEPSI Premium Di Dalam Kotak Tanggal */
 .premium-badge-v2 {
     background: var(--color-theme-brown); color: white;
     padding: 5px 24px; border-radius: 50px; font-size: 0.72rem; text-transform: uppercase;
@@ -367,22 +517,36 @@ body {
 .wish-card .status-badge.tidak-hadir { background-color: #fce8e6; color: #c5221f; }
 .wish-card .message-text { font-size: 0.83rem; line-height: 1.6; color: #5a544d; margin: 0; font-weight: 300; }
 
-/* Modifikasi Warna Elemen Card BSI Menjadi Coklat Tua Senada */
+/* REVISI 3: RESTRUKTURISASI METODE HADIAH (BSI & DANA) */
 .gift-section { padding: 65px 30px; border-top: 1px solid rgba(164,124,92,0.15); }
-.gift-container { display: flex; justify-content: center; }
+.gift-wrapper-flex {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
 .gift-box { 
     background: rgba(255, 255, 255, 0.75); border: 1px solid var(--color-border); 
-    border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 360px; 
+    border-radius: 24px; padding: 35px 25px; width: 100%; max-width: 290px; 
     box-shadow: var(--shadow-subtle); text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+}
+.gift-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
 }
 .gift-bank-icon { color: var(--color-theme-brown) !important; margin-bottom: 15px; opacity: 0.9; }
 .gift-bank-title { font-family: var(--font-body) !important; font-weight: 700 !important; margin: 5px 0; font-size: 1.15rem; color: var(--color-theme-brown) !important; }
-#account-number { font-family: var(--font-subheading); font-weight: 700; font-size: 1.55rem; color: var(--color-theme-brown); margin: 12px 0; letter-spacing: 1.5px; }
-.gift-account-name { font-size: 1.1rem; color: var(--color-theme-brown); font-weight: 400; margin-bottom: 20px; }
+#account-number, #dana-number { font-family: var(--font-subheading); font-weight: 700; font-size: 1.45rem; color: var(--color-theme-brown); margin: 12px 0; letter-spacing: 1px; }
+.gift-account-name { font-size: 1rem; color: var(--color-theme-brown); font-weight: 400; margin-bottom: 20px; }
 .gift-box .copy-button { 
-    background-color: var(--color-theme-brown) !important; color: #ffffff !important; border: none; padding: 12px 28px; 
+    background-color: var(--color-theme-brown) !important; color: #ffffff !important; border: none; padding: 12px 24px; 
     border-radius: 12px; cursor: pointer; transition: var(--transition-smooth); font-size: 0.85rem; font-weight: 500;
     box-shadow: 0 4px 12px rgba(121, 85, 56, 0.2);
+    width: 100%;
 }
 .gift-box .copy-button:hover { filter: brightness(1.15); transform: translateY(-1px); }
 
@@ -402,6 +566,10 @@ body {
 @media (max-width: 768px) {
     #main-content { padding: 35px 12px; }
     .card-header { padding: 50px 20px 35px 20px; }
+    .mempelai-section { padding: 55px 20px; }
+    .mempelai-container { flex-direction: column; align-items: center; gap: 24px; max-width: 320px; }
+    .mempelai-card { width: 100%; padding: 30px 20px; }
+    .mempelai-photo-wrapper { max-width: 190px; }
     .gallery-grid { gap: 12px; }
     .event-details { padding: 45px 15px; }
     .resepsi-master-wrapper { padding: 16px 10px; border-radius: 20px; }
@@ -411,4 +579,6 @@ body {
     .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
     .timeline-item.left::after, .timeline-item.right::after { left: 7px; }
     .timeline-content { text-align: left; padding: 20px; }
+    .gift-wrapper-flex { flex-direction: column; align-items: center; }
+    .gift-box { max-width: 100%; }
 }
