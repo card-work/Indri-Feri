@@ -22,19 +22,18 @@
     <div id="cover-page">
         <div class="hero-overlay"></div>
         <div class="hero-content-fluid">
-            <p class="hero-subtext">UNDANGAN PERNIKAHAN</p>
+            <!-- REVISI WARNA: Disamakan dengan warna gelap Tamu Undangan agar kontras -->
+            <p class="hero-subtext style-dark-contrast">UNDANGAN PERNIKAHAN</p>
             
-            <!-- Nama Mempelai Terpisah Baris -->
             <div class="hero-names-wrapper">
                 <span class="hero-name-line">Indri</span>
                 <span class="hero-ampersand">&</span>
                 <span class="hero-name-line">Feri</span>
             </div>
             
-            <!-- Tanggal Langsung Tanpa Kata Resepsi -->
-            <p class="hero-date-text">Sabtu, 08 Agustus 2026</p>
+            <p class="hero-date-text style-dark-contrast">Sabtu, 08 Agustus 2026</p>
             
-            <p class="yth-text">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <p class="yth-text style-dark-contrast">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
             <h2 id="guest-name-display">Tamu Undangan</h2>
             <button id="open-invitation-btn"><i class="fa-solid fa-envelope-open"></i> Buka Undangan</button>
         </div>
@@ -67,15 +66,15 @@
                 <p class="surah">QS. Ar-Rum Ayat 21</p>
             </div>
 
-            <!-- REVISI: SECTION MEMPELAI (Judul Ganti Bismillah Premium) -->
+            <!-- SECTION MEMPELAI -->
             <div class="mempelai-section animated-section section-premium" id="sec-mempelai" data-delay="0.1">
                 <div class="ornament watermark center-watermark mempelai-floral-watermark"></div>
                 <div class="ornament top-left mempelai-floral-top"></div>
                 <div class="ornament bottom-right mempelai-floral-bottom"></div>
                 
                 <div class="mempelai-header">
-                    <!-- Tulisan Bismillah Kaligrafi / Estetik -->
-                    <h2 class="mempelai-bismillah">Bismillaahirrahmaanirrahiim</h2>
+                    <!-- REVISI: Teks Bismillah diganti menggunakan aksara Arab Premium -->
+                    <h2 class="mempelai-bismillah-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
                     <p class="mempelai-intro">
                         Dengan memohon rahmat dan ridho Allah SWT, izinkan kami memperkenalkan kedua mempelai yang akan melangsungkan akad suci pernikahan.
                     </p>
@@ -94,6 +93,9 @@
                             <i class="fa-brands fa-instagram"></i> @indriani_0026
                         </a>
                     </div>
+
+                    <!-- REVISI: Elemen dekoratif ampersand (&) premium di antara kedua card -->
+                    <div class="mempelai-divider-ampersand">&</div>
 
                     <!-- Card Mempelai Pria -->
                     <div class="mempelai-card">
@@ -202,7 +204,7 @@
                 </div>
             </div>
 
-            <!-- SECTION GALLERY (Judul: Gallery Foto, Gambar format .jpeg) -->
+            <!-- SECTION GALLERY -->
             <div class="gallery-section animated-section section-premium" id="sec-gallery">
                 <div class="ornament top-right flower-style-3"></div>
                 <div class="ornament watermark center-watermark flower-watermark-2"></div>
@@ -261,7 +263,7 @@
                 <div id="wishes-list"></div>
             </div>
 
-            <!-- SECTION GIFT (DANA a.n Indriani) -->
+            <!-- SECTION GIFT -->
             <div class="gift-section animated-section section-premium" id="sec-gift">
                 <div class="ornament watermark center-watermark floral-line-center"></div>
                 <div class="ornament top-right leaves-style-2"></div>
@@ -279,7 +281,7 @@
                         <button class="copy-button" data-clipboard-target="#account-number"><i class="fa-solid fa-copy"></i> Salin No. Rekening</button>
                     </div>
 
-                    <!-- CARD 2: DANA (Revisi Atas Nama Indriani) -->
+                    <!-- CARD 2: DANA -->
                     <div class="gift-box">
                         <i class="fa-solid fa-wallet fa-2x gift-bank-icon"></i>
                         <h4 class="gift-bank-title">DANA</h4>
@@ -304,7 +306,7 @@
         <img class="modal-content" id="modal-image">
     </div>
 
-    <!-- REVISI AUDIO: Menggunakan file lagu.mp3 -->
+    <!-- REVISI TRACK LAGU: Dialihkan ke folder lagu/lagu.mp3 -->
     <audio id="background-music" loop>
         <source src="lagu/lagu.mp3" type="audio/mpeg">
     </audio>
